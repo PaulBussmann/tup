@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include "tup/config.h"
 #include "compat/dir_mutex.h"
+#include <errno.h>
 
 FILE *__wrap_tmpfile(void) ATTRIBUTE_USED;
 
