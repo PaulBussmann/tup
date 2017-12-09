@@ -1,16 +1,12 @@
 .gitignore
 
-ifdef TARGET
-TARGET = @(TARGET)
-else
-TARGET = @(TUP_PLATFORM)
-endif
-
-ifdef CC
-CC = @(CC)
-else
-CC = gcc
-endif
+# --- 
+# Hard code config for MinGW. Any hint for how to do this better is welcome.
+CC32 = i686-w64-mingw32-gcc
+CC = i686-w64-mingw32-gcc
+TARGET = win32
+TUP_PLATFORM = win32
+# ---
 
 ifeq (@(TUP_DEBUG),y)
 CFLAGS += -g
