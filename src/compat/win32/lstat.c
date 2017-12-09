@@ -23,6 +23,7 @@
 #include <windows.h>
 #include <stdio.h>
 #include "tup/compat.h"
+#include <errno.h>
 
 #define WINDOWS_TICK 10000000
 #define SEC_TO_UNIX_EPOCH 11644473600LL
