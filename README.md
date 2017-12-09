@@ -13,3 +13,26 @@ unnecessary work. This means you can stay focused on your project rather
 than on your build system.
 
 Further information can be found at http://gittup.org/tup
+
+# Building Tup
+
+## On Linux for MinGW (Windows)
+
+The following steps were tested on Ubuntu 17.10
+
+```
+# install required packages
+sudo apt install git gcc libfuse-dev gcc-mingw-w64-i686 
+git clone https://github.com/PaulBussmann/tup.git
+cd tup
+
+# bootstrap native tup, lua
+./build.sh
+mkdir build-tup-linux
+cp build/tup build/lua build-tup-linux/
+export PATH=$PWD/build-tup-linux:$PATH
+
+# cross compile for MinGW
+git checkout BuildForMinGW
+tup
+```
