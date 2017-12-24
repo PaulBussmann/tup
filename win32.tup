@@ -1,10 +1,10 @@
-ifdef CC32
-CC32 = @(CC32)
-else
-CC32 = $(CC)
-CFLAGS32 += -m32
-LDFLAGS32 += -m32
-endif
+# ifdef CC32
+# CC32 = @(CC32)
+# else
+# CC32 = $(CC)
+# CFLAGS32 += -m32
+# LDFLAGS32 += -m32
+# endif
 
 # Minimum version is windows Vista (for GetFinalPathNameByHandle, at least)
 CFLAGS += -D_WIN32_WINNT=0x600

@@ -22,7 +22,7 @@ The following steps were tested on Ubuntu 17.10
 
 ```
 # install required packages
-sudo apt install git gcc libfuse-dev gcc-mingw-w64-i686 
+sudo apt install git pkg-config gcc libfuse-dev gcc-mingw-w64-i686 gcc-mingw-w64-x86-64
 git clone https://github.com/PaulBussmann/tup.git
 cd tup
 

@@ -3,7 +3,7 @@
 # --- 
 # Hard code config for MinGW. Any hint for how to do this better is welcome.
 CC32 = i686-w64-mingw32-gcc
-CC = i686-w64-mingw32-gcc
+CC = x86_64-w64-mingw32-gcc-win32
 TARGET = win32
 TUP_PLATFORM = win32
 # ---
@@ -41,10 +41,12 @@ CFLAGS += -fno-common
 CFLAGS += -D_FILE_OFFSET_BITS=64
 CFLAGS += -I$(TUP_CWD)/src
 
-ifeq (@(TUP_32_BIT),y)
-CFLAGS += -m32
-LDFLAGS += -m32
-endif
+# --- 
+# removed for MinGW. Any hint for how to do this better is welcome.
+# ifeq (@(TUP_32_BIT),y)
+# CFLAGS += -m32
+# LDFLAGS += -m32
+# endif
 
 export PKG_CONFIG_PATH
 

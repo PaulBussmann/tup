@@ -106,6 +106,15 @@ int handle_open_file(enum access_type at, const char *filename,
 	struct file_entry *fent;
 	int rc = 0;
 
+	if ((strstr(filename, "Telemetry.dat") != NULL) ||
+	    (strstr(filename, "vc140.pdb") != NULL) ||
+	    (strcmp("nul", filename) == 0))
+	{
+		/* fprintf(stdout, "skipping '%s' was written to...\n", filename); */
+
+		return 0;
+	}
+
 	fent = new_entry(filename);
 	if(!fent) {
 		return -1;
