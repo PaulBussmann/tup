@@ -3,7 +3,8 @@
 # --- 
 # Hard code config for MinGW. Any hint for how to do this better is welcome.
 CC32 = i686-w64-mingw32-gcc
-CC = x86_64-w64-mingw32-gcc-win32
+# CC = x86_64-w64-mingw32-gcc-win32
+CC = i686-w64-mingw32-gcc
 TARGET = win32
 TUP_PLATFORM = win32
 # ---

@@ -7,7 +7,10 @@
 # endif
 
 # Minimum version is windows Vista (for GetFinalPathNameByHandle, at least)
-CFLAGS += -D_WIN32_WINNT=0x600
+# CFLAGS += -D_WIN32_WINNT=0x600
+
+# Windows XP SP 2
+CFLAGS += -D_WIN32_WINNT=0x502
 
 # Compatibility function prototypes and include path for wrapper functions
 CFLAGS += -include $(TUP_CWD)/src/compat/win32/mingw.h
