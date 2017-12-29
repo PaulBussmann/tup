@@ -1895,7 +1895,13 @@ DWORD tup_inject_init(remote_thread_t* r)
 
 	if (open_file(r->depfilename))
 		return 1;
+#if _WIN32_WINNT >= 0x600
 	_putenv_s(TUP_VARDICT_NAME, r->vardict_file);
+#else
+	char envstring[1024];
+	sprintf(envstring, "%s=%s", TUP_VARDICT_NAME, r->vardict_file);
+	_putenv(envstring);
+#endif
 
 	strcpy(s_depfilename, r->depfilename);
 	strcpy(s_vardict_file, r->vardict_file);
@@ -2242,7 +2248,7 @@ int tup_inject_dll(
 		strcat(remote.dll_name, "tup-dllinject32.dll");
 		strcat(remote.func_name, "tup_inject_init");
 
-#if _WIN32_WINNT >= 0x600		
+#if _WIN32_WINNT >= 0x600
 		WOW64_CONTEXT ctx;
 		ctx.ContextFlags = WOW64_CONTEXT_CONTROL;
 		if ( !Wow64GetThreadContext( lpProcessInformation->hThread, &ctx ) )
