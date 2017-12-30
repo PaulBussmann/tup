@@ -2221,6 +2221,8 @@ int tup_inject_dll(
 	size_t code_size;
 	DWORD old_protect;
 	HANDLE process;
+	
+#if _WIN32_WINNT >= 0x600
 	BOOL bWow64 = 0;
 
 	IsWow64Process(lpProcessInformation->hProcess, &bWow64);
@@ -2228,6 +2230,7 @@ int tup_inject_dll(
 	// WOW64
 	DEBUG_HOOK("%s is WOW64: %i\n", GetCommandLineA(), bWow64);
 	if (bWow64) {
+#endif
 		remote_thread32_t remote;
 
 		if (GET_PROC_ADDRESS_32 == 0) {
@@ -2318,6 +2321,7 @@ int tup_inject_dll(
 		if( !SetThreadContext( lpProcessInformation->hThread, &ctx ) )
 			return -1;
 #endif
+#if _WIN32_WINNT >= 0x600
 	} else {
 #ifdef _WIN64
 		HMODULE kernel32;
@@ -2400,6 +2404,7 @@ int tup_inject_dll(
 		return -1;
 #endif
 	}
+#endif
 
 	return 0;
 }
